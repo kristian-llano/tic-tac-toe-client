@@ -4,7 +4,7 @@ const store = require('./../store')
 const onSignUpSuccess = function (responseData) {
   $('#sign-up-message').text('Account successfully created!')
   setTimeout(function () {
-    $('#sign-in-message').fadeOut('slow')
+    $('#sign-up-message').fadeOut('slow')
   }, 2000)
   $('form').trigger('reset')
 }
@@ -33,10 +33,12 @@ const onSignOutSuccess = function (responseData) {
   $('#sign-in').show()
   $('#sign-up').show()
   $('#play-new-game').hide()
+  $('#game').hide()
 }
 
 const onPlayNewGameSuccess = function (event) {
   $('#play-new-game').hide()
+  $('#game').show()
 }
 
 const onError = function (err) {
