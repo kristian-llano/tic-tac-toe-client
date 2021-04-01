@@ -19,7 +19,7 @@ const onSignInSuccess = function (responseData) {
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#sign-out').show()
-  $('#play-game').show()
+  $('#play-new-game').show()
 }
 
 const onSignOutSuccess = function (responseData) {
@@ -32,11 +32,11 @@ const onSignOutSuccess = function (responseData) {
   $('#sign-out').hide()
   $('#sign-in').show()
   $('#sign-up').show()
-  $('#play-game').hide()
+  $('#play-new-game').hide()
 }
 
-const onPlayGameSuccess = function (event) {
-  $('#play-game').hide()
+const onPlayNewGameSuccess = function (event) {
+  $('#play-new-game').hide()
 }
 
 const onError = function (err) {
@@ -48,6 +48,6 @@ module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
   onSignOutSuccess,
-  onPlayGameSuccess,
+  onPlayNewGameSuccess,
   onError
 }
