@@ -37,7 +37,9 @@ const onSignOutSuccess = function (responseData) {
   $('#player-one').hide()
 }
 
-const onPlayNewGameSuccess = function (event) {
+const onPlayNewGameSuccess = function (responseData) {
+  console.log(responseData)
+  store.game = responseData.game
   $('#play-new-game').hide()
   $('#game').show()
   $('#player-one').show()

@@ -37,10 +37,9 @@ const onPlayNewGame = function (event) {
 
 const onClickCell = function (event) {
   event.preventDefault()
-  const id = $(user.game._id).data('id')
-  const index = 'data-cell-index'
+  const index = 4
   const value = ['x', 'o']
-  api.clickOnCell(index, value, id)
+  api.clickOnCell(index, value)
     .then(ui.onClickCellSuccess)
     .catch(ui.onError)
 }
