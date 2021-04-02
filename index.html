@@ -16,41 +16,77 @@
 <body>
 
   <h1>Tic Tac Toe</h1>
-  <form id='sign-up'>
-    <h2>Sign-up</h2>
-    <input name='credentials[email]' type='email' placeholder='Email' required>
-    <input name='credentials[password]' type='password' placeholder='Password' required>
-    <input name='credentials[password_confirmation]' type='password' placeholder='Confirm password' required>
-    <button>Sign Up</button>
-  </form>
-  <div id='sign-up-message'></div>
 
-  <form id='sign-in'>
-    <h2>Sign In</h2>
-    <input name='credentials[email]' type='email' placeholder='Email' required>
-    <input name='credentials[password]' type='password' placeholder='Password' required>
-    <button>Sign In</button>
-  </form>
-  <div id='sign-in-message'></div>
+  <section id='user-auth'>
+    <form id='sign-up'>
+      <h2>Sign-up</h2>
+      <input name='credentials[email]' type='email' placeholder='Email' required>
+      <input name='credentials[password]' type='password' placeholder='Password' required>
+      <input name='credentials[password_confirmation]' type='password' placeholder='Confirm password' required>
+      <button>Sign Up</button>
+    </form>
+    <div id='sign-up-message'></div>
 
-  <div id='play-new-game'>
-    <button>Play New Game</button>
-  </div>
-  <div id='game'>
-    <div class='container'>
-      <div class="row">
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
-        <div class="col-4 box alt-color"></div>
+    <form id='sign-in'>
+      <h2>Sign In</h2>
+      <input name='credentials[email]' type='email' placeholder='Email' required>
+      <input name='credentials[password]' type='password' placeholder='Password' required>
+      <button>Sign In</button>
+    </form>
+    <div id='sign-in-message'></div>
+  </section>
+
+  <section id='game-section'>
+    <div id='play-new-game'>
+      <button>Play New Game</button>
+    </div>
+    <div id='game'>
+
+      <div id='player-one'>
+        <h3>Player 1's turn!</h3>
+      </div>
+      <div class='container'>
+        <div class="row">
+          <div id='data-cell-0' data-cell-index='0'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-1' data-cell-index='1'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-2' data-cell-index='2'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-3' data-cell-index='3'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-4' data-cell-index='4'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-5' data-cell-index='5'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-6' data-cell-index='6'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-7' data-cell-index='7'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+          <div id='data-cell-8' data-cell-index='8'>
+            <div class="col-4 box alt-color">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <div id='sign-out'>
     <button>Sign Out</button>

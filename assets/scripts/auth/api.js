@@ -1,4 +1,3 @@
-
 const config = require('../config')
 const store = require('./../store')
 
@@ -38,9 +37,29 @@ const playNewGame = function () {
   })
 }
 
+const clickOnCell = function (index, value, id) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/:' + id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 0,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
-  playNewGame
+  playNewGame,
+  clickOnCell
 }

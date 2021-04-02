@@ -34,11 +34,17 @@ const onSignOutSuccess = function (responseData) {
   $('#sign-up').show()
   $('#play-new-game').hide()
   $('#game').hide()
+  $('#player-one').hide()
 }
 
 const onPlayNewGameSuccess = function (event) {
   $('#play-new-game').hide()
   $('#game').show()
+  $('#player-one').show()
+}
+
+const onClickCellSuccess = function (event) {
+  $('#data-cell-4').add('<p>symbol</p>')
 }
 
 const onError = function (err) {
@@ -51,5 +57,6 @@ module.exports = {
   onSignInSuccess,
   onSignOutSuccess,
   onPlayNewGameSuccess,
+  onClickCellSuccess,
   onError
 }
