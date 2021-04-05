@@ -20,17 +20,17 @@
   <section id='user-auth'>
     <form id='sign-up'>
       <h2>Sign-up</h2>
-      <input name='credentials[email]' type='email' placeholder='Email' required>
-      <input name='credentials[password]' type='password' placeholder='Password' required>
-      <input name='credentials[password_confirmation]' type='password' placeholder='Confirm password' required>
+      <input name='credentials[email]' type='email' placeholder='Email' required autocomplete='email'>
+      <input name='credentials[password]' type='password' placeholder='Password' required autocomplete='new-password'>
+      <input name='credentials[password_confirmation]' type='password' placeholder='Confirm password' required autocomplete='new-password'>
       <button>Sign Up</button>
     </form>
     <div id='sign-up-message'></div>
 
     <form id='sign-in'>
       <h2>Sign In</h2>
-      <input name='credentials[email]' type='email' placeholder='Email' required>
-      <input name='credentials[password]' type='password' placeholder='Password' required>
+      <input name='credentials[email]' type='email' placeholder='Email' required autocomplete='email'>
+      <input name='credentials[password]' type='password' placeholder='Password' required autocomplete='current-password'>
       <button>Sign In</button>
     </form>
     <div id='sign-in-message'></div>
@@ -45,7 +45,7 @@
         <h3>Player 1's turn!</h3>
       </div>
       <div class='container'>
-        <div class="row">
+        <div id='index' class="row">
           <div id='data-cell-0' data-cell-index='0' class="col-4 box alt-color"></div>
           <div id='data-cell-1' data-cell-index='1' class="col-4 box alt-color"></div>
           <div id='data-cell-2' data-cell-index='2' class="col-4 box alt-color"></div>
@@ -66,6 +66,7 @@
   <div id='sign-out-message'></div>
 
   <section>
+    <div id='space-taken-message'></div>
     <div id='error-message'></div>
   </section>
 </body>

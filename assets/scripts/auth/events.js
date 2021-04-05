@@ -1,7 +1,7 @@
-
 const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
+const store = require('./../store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -35,13 +35,34 @@ const onPlayNewGame = function (event) {
     .catch(ui.onError)
 }
 
+let currentPlayer = 'X'
 const onClickCell = function (event) {
-  event.preventDefault()
-  const index = 4
-  const value = ['x', 'o']
-  api.clickOnCell(index, value)
-    .then(ui.onClickCellSuccess)
-    .catch(ui.onError)
+  const cell = $(event.target)
+  const value = cell.text()
+  const formData = {
+    game: {
+      cell: {
+        index: cell,
+        value: currentPlayer
+      },
+      over: store.game.over
+    }
+  }
+  const id = store.game._id
+  if (value === 'X' || value === 'O') {
+    $('#space-taken-message').text('That space is taken!')
+  } else if (currentPlayer === 'X') {
+    cell.css('background', 'green').text('X')
+  } else {
+    cell.css('background', 'red').text('O')
+  } if (currentPlayer === 'X') {
+    currentPlayer = 'O'
+  } else {
+    currentPlayer = 'X'
+  }
+  api.clickOnCell(id, formData)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.error)
 }
 
 module.exports = {

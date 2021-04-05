@@ -1,4 +1,3 @@
-'use strict'
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
@@ -16,5 +15,5 @@ $(() => {
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#play-new-game').on('click', authEvents.onPlayNewGame)
-  $('#data-cell-4').on('click', authEvents.onClickCell)
+  $('#index').on('click', authEvents.onClickCell)
 })

@@ -37,21 +37,13 @@ const playNewGame = function () {
   })
 }
 
-const clickOnCell = function (index, value) {
+const clickOnCell = function (id, formData) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games/' + store.game._id,
+    url: config.apiUrl + '/games/' + id,
+    data: formData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
-    },
-    data: {
-      game: {
-        cell: {
-          index: null,
-          value: null
-        },
-        over: false
-      }
     }
   })
 }

@@ -46,7 +46,7 @@ const onPlayNewGameSuccess = function (responseData) {
 }
 
 const onClickCellSuccess = function (event) {
-  $('#data-cell-4').add('<p>symbol</p>')
+  $('#player-one').text('Player 2s turn!')
 }
 
 const onError = function (err) {
