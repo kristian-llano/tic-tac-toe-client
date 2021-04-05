@@ -18,7 +18,7 @@ const onSignInSuccess = function (responseData) {
   $('form').trigger('reset')
   $('#sign-in').hide()
   $('#sign-up').hide()
-  $('#sign-out').show()
+  $('.sign-out').show()
   $('#play-new-game').show()
 }
 
@@ -29,7 +29,7 @@ const onSignOutSuccess = function (responseData) {
     $('#sign-out-message').fadeOut('slow')
   }, 2000)
   $('form').trigger('reset')
-  $('#sign-out').hide()
+  $('.sign-out').hide()
   $('#sign-in').show()
   $('#sign-up').show()
   $('#play-new-game').hide()
@@ -45,13 +45,26 @@ const onPlayNewGameSuccess = function (responseData) {
   $('#player-one').show()
 }
 
+let currentPlayer = 'X'
 const onClickCellSuccess = function (event) {
-  $('#player-one').text('Player 2s turn!')
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O'
+  } else {
+    currentPlayer = 'X'
+  }
+  if (currentPlayer === 'X') {
+    $('.player-1-turn-message').text('Player 1\'s turn!')
+  } else if (currentPlayer === 'O') {
+    $('.player-1-turn-message').text('Player 2\'s turn!')
+  }
 }
 
 const onError = function (err) {
   console.error(err)
   $('#error-message').text('Something went wrong, please try again.')
+  setTimeout(function () {
+    $('#space-taken-message').fadeOut('slow')
+  }, 2000)
 }
 
 module.exports = {

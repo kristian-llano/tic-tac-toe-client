@@ -42,7 +42,7 @@ const onClickCell = function (event) {
   const formData = {
     game: {
       cell: {
-        index: cell,
+        index: 'data-cell-index',
         value: currentPlayer
       },
       over: store.game.over
@@ -61,8 +61,8 @@ const onClickCell = function (event) {
     currentPlayer = 'X'
   }
   api.clickOnCell(id, formData)
-    .then(ui.onUpdateSuccess)
-    .catch(ui.error)
+    .then(ui.onClickCellSuccess)
+    .catch(ui.onError)
 }
 
 module.exports = {
