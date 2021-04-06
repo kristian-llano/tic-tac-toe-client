@@ -42,7 +42,7 @@ const onClickCell = function (event) {
   const formData = {
     game: {
       cell: {
-        index: 'data-cell-index',
+        index: $(event.target).attr('data-cell-index'),
         value: currentPlayer
       },
       over: store.game.over
@@ -51,10 +51,13 @@ const onClickCell = function (event) {
   const id = store.game._id
   if (value === 'X' || value === 'O') {
     $('#space-taken-message').text('That space is taken!')
+    return
   } else if (currentPlayer === 'X') {
     cell.css('background', 'green').text('X')
-  } else {
+    $('.player-1-turn-message').text('Player 2\'s turn!')
+  } else if (currentPlayer === 'O') {
     cell.css('background', 'red').text('O')
+    $('.player-1-turn-message').text('Player 1\'s turn!')
   } if (currentPlayer === 'X') {
     currentPlayer = 'O'
   } else {

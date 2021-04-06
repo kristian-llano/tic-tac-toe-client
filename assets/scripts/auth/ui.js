@@ -5,7 +5,7 @@ const onSignUpSuccess = function (responseData) {
   $('#sign-up-message').text('Account successfully created!')
   setTimeout(function () {
     $('#sign-up-message').fadeOut('slow')
-  }, 2000)
+  }, 3000)
   $('form').trigger('reset')
 }
 
@@ -14,7 +14,7 @@ const onSignInSuccess = function (responseData) {
   $('#sign-in-message').text('Successfully logged in!')
   setTimeout(function () {
     $('#sign-in-message').fadeOut('slow')
-  }, 2000)
+  }, 3000)
   $('form').trigger('reset')
   $('#sign-in').hide()
   $('#sign-up').hide()
@@ -27,7 +27,7 @@ const onSignOutSuccess = function (responseData) {
   $('#sign-out-message').text('Successfully logged out!')
   setTimeout(function () {
     $('#sign-out-message').fadeOut('slow')
-  }, 2000)
+  }, 3000)
   $('form').trigger('reset')
   $('.sign-out').hide()
   $('#sign-in').show()
@@ -45,26 +45,18 @@ const onPlayNewGameSuccess = function (responseData) {
   $('#player-one').show()
 }
 
-let currentPlayer = 'X'
 const onClickCellSuccess = function (event) {
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
-    currentPlayer = 'X'
-  }
-  if (currentPlayer === 'X') {
-    $('.player-1-turn-message').text('Player 1\'s turn!')
-  } else if (currentPlayer === 'O') {
-    $('.player-1-turn-message').text('Player 2\'s turn!')
-  }
+  setTimeout(function () {
+    $('#space-taken-message').fadeOut('slow')
+  }, 3500)
 }
 
 const onError = function (err) {
   console.error(err)
   $('#error-message').text('Something went wrong, please try again.')
   setTimeout(function () {
-    $('#space-taken-message').fadeOut('slow')
-  }, 2000)
+    $('#error-message').fadeOut('slow')
+  }, 3000)
 }
 
 module.exports = {
