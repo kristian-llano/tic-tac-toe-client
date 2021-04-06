@@ -68,19 +68,10 @@ const onClickCell = function (event) {
     .catch(ui.onError)
 }
 
-const winningCombos = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],
-  [0, 4, 8], [2, 4, 6]
-]
-
-const isEqual = function () {
-  if (winningCombos === store.game.cells) {
-    $('.player-1-turn-message').text('')
+const onGameOver = function () {
+  if (store.game.cells[0] === store.game.cells[1] && store.game.cells[0] === store.game.cells[2]) {
+    $('.player-1-turn-message').text('Player win')
   }
-}
-const onGameOver = function (event) {
-  winningCombos.every(isEqual)
 }
 
 module.exports = {
