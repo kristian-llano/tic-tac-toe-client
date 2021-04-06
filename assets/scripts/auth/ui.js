@@ -43,12 +43,17 @@ const onPlayNewGameSuccess = function (responseData) {
   $('#play-new-game').hide()
   $('#game').show()
   $('#player-one').show()
+  $('.play-again').hide()
 }
 
 const onClickCellSuccess = function (event) {
   setTimeout(function () {
     $('#space-taken-message').fadeOut('slow')
   }, 3500)
+}
+
+const onGameOverSuccess = function (responseData) {
+  $('.play-again').show()
 }
 
 const onError = function (err) {
@@ -65,5 +70,6 @@ module.exports = {
   onSignOutSuccess,
   onPlayNewGameSuccess,
   onClickCellSuccess,
+  onGameOverSuccess,
   onError
 }
