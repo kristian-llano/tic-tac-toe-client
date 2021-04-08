@@ -49,12 +49,9 @@ const onClickCell = function (event) {
     }
   }
   const id = store.game._id
-  if (store.game.cells[0] === 'X' && store.game.cells[1] === 'X' && store.game.cells[2] === 'X') {
+  if (store.game.cells[0] === '' && store.game.cells[1] === '' && store.game.cells[2] === '') {
     $('.player-1-turn-message').text('Player 1 wins!')
-    store.game.over = true
-  } else if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
-    $('.player-1-turn-message').text('Player 1 wins!')
-    store.game.over = true
+    console.log(store.game)
   }
   if (value === 'X' || value === 'O') {
     $('#space-taken-message').text('That space is taken!')
