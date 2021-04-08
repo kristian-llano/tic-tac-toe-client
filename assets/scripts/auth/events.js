@@ -39,7 +39,7 @@ let currentPlayer = 'X'
 const onClickCell = function (event) {
   const cell = $(event.target)
   const value = cell.text()
-  const formData = {
+  const clickedCellData = {
     game: {
       cell: {
         index: $(event.target).attr('data-cell-index'),
@@ -49,6 +49,13 @@ const onClickCell = function (event) {
     }
   }
   const id = store.game._id
+  if (store.game.cells[0] === 'X' && store.game.cells[1] === 'X' && store.game.cells[2] === 'X') {
+    $('.player-1-turn-message').text('Player 1 wins!')
+    store.game.over = true
+  } else if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
+    $('.player-1-turn-message').text('Player 1 wins!')
+    store.game.over = true
+  }
   if (value === 'X' || value === 'O') {
     $('#space-taken-message').text('That space is taken!')
     return
@@ -63,22 +70,23 @@ const onClickCell = function (event) {
   } else {
     currentPlayer = 'X'
   }
-  api.clickOnCell(id, formData)
+  api.clickOnCell(id, clickedCellData)
     .then(ui.onClickCellSuccess)
     .catch(ui.onError)
 }
 
-const onGameOver = function () {
-  if (store.game.cells[0] === store.game.cells[1] && store.game.cells[0] === store.game.cells[2]) {
-    $('.player-1-turn-message').text('Player win')
-  }
-}
+// const onGameOver = function () {
+//   if (store.game.cells.index[0] === 'X' && store.game.cells.index[1] === 'X' && store.game.cells.index[2] === 'X') {
+//     $('.player-1-turn-message').text('Player 1 wins!')
+//   } else if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
+//     $('.player-1-turn-message').text('Player 1 wins!')
+//   }
+// }
 
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
   onPlayNewGame,
-  onClickCell,
-  onGameOver
+  onClickCell
 }
