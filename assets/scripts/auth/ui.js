@@ -43,17 +43,53 @@ const onPlayNewGameSuccess = function (responseData) {
   $('#play-new-game').hide()
   $('#game').show()
   $('#player-one').show()
-  $('.play-again').hide()
 }
 
-const onClickCellSuccess = function (event) {
+const onClickCellSuccess = function (response) {
+  if (store.game.cells[0] === 'X' && store.game.cells[1] === 'X' && store.game.cells[2] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[6] === 'X' && store.game.cells[7] === 'X' && store.game.cells[8] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[0] === 'X' && store.game.cells[3] === 'X' && store.game.cells[6] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[1] === 'X' && store.game.cells[4] === 'X' && store.game.cells[7] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[2] === 'X' && store.game.cells[5] === 'X' && store.game.cells[8] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[0] === 'X' && store.game.cells[4] === 'X' && store.game.cells[8] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[2] === 'X' && store.game.cells[4] === 'X' && store.game.cells[6] === 'X') {
+    store.game.over = true
+  } else if (store.game.cells[0] === 'O' && store.game.cells[1] === 'O' && store.game.cells[2] === 'O') {
+    store.game.over = true
+  } else if (store.game.cells[3] === 'O' && store.game.cells[4] === 'O' && store.game.cells[5] === 'O') {
+    store.game.over = true
+  } else if (store.game.cells[6] === 'O' && store.game.cells[7] === 'O' && store.game.cells[8] === 'O') {
+    store.game.over = true
+  } else if (store.game.cells[0] === 'O' && store.game.cells[3] === 'O' && store.game.cells[6] === 'O') {
+    store.game.over = true
+  } else if (store.game.cells[1] === 'O' && store.game.cells[4] === 'O' && store.game.cells[7] === 'O') {
+    store.game.over = true
+  } else if (store.game.cells[2] === 'O' && store.game.cells[5] === 'O' && store.game.cells[8] === 'O') {
+    store.game.over = true
+  } else if (store.game.cells[0] === 'O' && store.game.cells[4] === 'O' && store.game.cells[8] === 'O') {
+    store.game.over = true
+  } else if (store.game.cells[2] === 'O' && store.game.cells[4] === 'O' && store.game.cells[6] === 'O') {
+    store.game.over = true
+  }
+  if (store.game.over === true) {
+    $('.player-1-turn-message').text(' wins!')
+    $('.play-again').show()
+  // } else if (store.game.over === true) {
+  //   $('.player-1-turn-message').text(' wins!')
+  //   $('.play-again').show()
+  }
+  store.game = response.game
   setTimeout(function () {
     $('#space-taken-message').fadeOut('slow')
   }, 3500)
-}
-
-const onGameOverSuccess = function (responseData) {
-  $('.play-again').show()
 }
 
 const onError = function (err) {
@@ -70,6 +106,5 @@ module.exports = {
   onSignOutSuccess,
   onPlayNewGameSuccess,
   onClickCellSuccess,
-  onGameOverSuccess,
   onError
 }

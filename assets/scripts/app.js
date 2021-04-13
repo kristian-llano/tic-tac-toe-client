@@ -13,5 +13,5 @@ $(() => {
   $('#play-new-game').on('click', authEvents.onPlayNewGame)
   $('.play-again').on('click', authEvents.onPlayNewGame)
   $('.row').on('click', authEvents.onClickCell)
-  $('.row').on('click', authEvents.onGameOver)
+  $('.row').on('click', authEvents.checkForWinner)
 })
