@@ -14,4 +14,5 @@ $(() => {
   $('.play-again').on('click', authEvents.onPlayNewGame)
   $('.row').on('click', authEvents.onClickCell)
   $('.row').on('click', authEvents.checkForWinner)
+  $('#player-two').hide()
 })

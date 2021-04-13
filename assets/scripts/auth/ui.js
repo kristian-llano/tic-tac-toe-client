@@ -45,7 +45,7 @@ const onPlayNewGameSuccess = function (responseData) {
   $('#player-one').show()
 }
 
-const onClickCellSuccess = function (response) {
+const onCheckWinnerSuccess = function () {
   if (store.game.cells[0] === 'X' && store.game.cells[1] === 'X' && store.game.cells[2] === 'X') {
     store.game.over = true
   } else if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
@@ -79,13 +79,14 @@ const onClickCellSuccess = function (response) {
   } else if (store.game.cells[2] === 'O' && store.game.cells[4] === 'O' && store.game.cells[6] === 'O') {
     store.game.over = true
   }
-  if (store.game.over === true) {
-    $('.player-1-turn-message').text(' wins!')
+  if (store.game.over === false) {
+  } else if (store.game.over === true) {
+    $('.player-1-turn-message').text(store.game.value + ' wins!')
     $('.play-again').show()
-  // } else if (store.game.over === true) {
-  //   $('.player-1-turn-message').text(' wins!')
-  //   $('.play-again').show()
   }
+}
+
+const onClickCellSuccess = function (response) {
   store.game = response.game
   setTimeout(function () {
     $('#space-taken-message').fadeOut('slow')
@@ -106,5 +107,6 @@ module.exports = {
   onSignOutSuccess,
   onPlayNewGameSuccess,
   onClickCellSuccess,
+  onCheckWinnerSuccess,
   onError
 }

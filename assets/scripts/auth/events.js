@@ -35,42 +35,6 @@ const onPlayNewGame = function (event) {
     .catch(ui.onError)
 }
 
-const checkForWinner = function () {
-  if (store.game.cells[0] === 'X' && store.game.cells[1] === 'X' && store.game.cells[2] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[6] === 'X' && store.game.cells[7] === 'X' && store.game.cells[8] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[0] === 'X' && store.game.cells[3] === 'X' && store.game.cells[6] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[1] === 'X' && store.game.cells[4] === 'X' && store.game.cells[7] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[2] === 'X' && store.game.cells[5] === 'X' && store.game.cells[8] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[0] === 'X' && store.game.cells[4] === 'X' && store.game.cells[8] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[2] === 'X' && store.game.cells[4] === 'X' && store.game.cells[6] === 'X') {
-    store.game.over = true
-  } else if (store.game.cells[0] === 'O' && store.game.cells[1] === 'O' && store.game.cells[2] === 'O') {
-    store.game.over = true
-  } else if (store.game.cells[3] === 'O' && store.game.cells[4] === 'O' && store.game.cells[5] === 'O') {
-    store.game.over = true
-  } else if (store.game.cells[6] === 'O' && store.game.cells[7] === 'O' && store.game.cells[8] === 'O') {
-    store.game.over = true
-  } else if (store.game.cells[0] === 'O' && store.game.cells[3] === 'O' && store.game.cells[6] === 'O') {
-    store.game.over = true
-  } else if (store.game.cells[1] === 'O' && store.game.cells[4] === 'O' && store.game.cells[7] === 'O') {
-    store.game.over = true
-  } else if (store.game.cells[2] === 'O' && store.game.cells[5] === 'O' && store.game.cells[8] === 'O') {
-    store.game.over = true
-  } else if (store.game.cells[0] === 'O' && store.game.cells[4] === 'O' && store.game.cells[8] === 'O') {
-    store.game.over = true
-  } else if (store.game.cells[2] === 'O' && store.game.cells[4] === 'O' && store.game.cells[6] === 'O') {
-    store.game.over = true
-  }
-}
-
 let currentPlayer = 'X'
 const onClickCell = function (event) {
   const cell = $(event.target)
@@ -80,15 +44,10 @@ const onClickCell = function (event) {
       cell: {
         index: $(event.target).attr('data-cell-index'),
         value: currentPlayer
-      },
-      over: store.game.over
+      }
     }
   }
   const id = store.game._id
-  console.log('This is store.game.cells[0]', store.game.cells[0])
-  console.log('This is store.game.cells[1]', store.game.cells[1])
-  console.log('This is store.game.cells[2]', store.game.cells[2])
-  console.log(store.game)
   if (value === 'X' || value === 'O') {
     $('#space-taken-message').text('That space is taken!')
     return
@@ -103,9 +62,9 @@ const onClickCell = function (event) {
   } else {
     currentPlayer = 'X'
   }
-  checkForWinner()
   api.clickOnCell(id, clickedCellData)
     .then(ui.onClickCellSuccess)
+    .then(ui.onCheckWinnerSuccess)
     .catch(ui.onError)
 }
 // build a check for winner function 'CHECK'
@@ -118,6 +77,5 @@ module.exports = {
   onSignIn,
   onSignOut,
   onPlayNewGame,
-  onClickCell,
-  checkForWinner
+  onClickCell
 }
