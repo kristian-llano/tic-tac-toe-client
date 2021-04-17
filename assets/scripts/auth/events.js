@@ -49,7 +49,7 @@ const onClickCell = function (event) {
   }
   const id = store.game._id
   if (value === 'X' || value === 'O') {
-    $('#space-taken-message').text('That space is taken!')
+    $('#space-taken-message').show()
     return
   } else if (currentPlayer === 'X') {
     cell.css('background', 'green').text('X')

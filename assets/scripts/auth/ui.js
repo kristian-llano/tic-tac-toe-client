@@ -35,6 +35,7 @@ const onSignOutSuccess = function (responseData) {
   $('#play-new-game').hide()
   $('#game').hide()
   $('#player-one').hide()
+  $('#play-again').hide()
 }
 
 const onPlayNewGameSuccess = function (responseData) {
@@ -43,54 +44,92 @@ const onPlayNewGameSuccess = function (responseData) {
   $('#play-new-game').hide()
   $('#game').show()
   $('#player-one').show()
+  store.game.over = false
+  $('.winner-message').hide()
+  $('#player-one').show()
+  $('.box').empty()
+  $('.row').css('pointer-events', 'auto')
+  $('#play-again').hide()
+  $('.box').css('background-color', '')
 }
 
+let currentPlayer = 'X'
 const onCheckWinnerSuccess = function () {
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O'
+  } else {
+    currentPlayer = 'X'
+  }
   if (store.game.cells[0] === 'X' && store.game.cells[1] === 'X' && store.game.cells[2] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[6] === 'X' && store.game.cells[7] === 'X' && store.game.cells[8] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[0] === 'X' && store.game.cells[3] === 'X' && store.game.cells[6] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[1] === 'X' && store.game.cells[4] === 'X' && store.game.cells[7] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[2] === 'X' && store.game.cells[5] === 'X' && store.game.cells[8] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[0] === 'X' && store.game.cells[4] === 'X' && store.game.cells[8] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[2] === 'X' && store.game.cells[4] === 'X' && store.game.cells[6] === 'X') {
     store.game.over = true
+    currentPlayer = 'X'
   } else if (store.game.cells[0] === 'O' && store.game.cells[1] === 'O' && store.game.cells[2] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   } else if (store.game.cells[3] === 'O' && store.game.cells[4] === 'O' && store.game.cells[5] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   } else if (store.game.cells[6] === 'O' && store.game.cells[7] === 'O' && store.game.cells[8] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   } else if (store.game.cells[0] === 'O' && store.game.cells[3] === 'O' && store.game.cells[6] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   } else if (store.game.cells[1] === 'O' && store.game.cells[4] === 'O' && store.game.cells[7] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   } else if (store.game.cells[2] === 'O' && store.game.cells[5] === 'O' && store.game.cells[8] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   } else if (store.game.cells[0] === 'O' && store.game.cells[4] === 'O' && store.game.cells[8] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   } else if (store.game.cells[2] === 'O' && store.game.cells[4] === 'O' && store.game.cells[6] === 'O') {
     store.game.over = true
+    currentPlayer = 'O'
   }
-  if (store.game.over === false) {
-  } else if (store.game.over === true) {
-    $('.player-1-turn-message').text(store.game.value + ' wins!')
-    $('.play-again').show()
+  if (store.game.over === true) {
+    $('#player-one').hide()
+    $('.winner-message').show()
+    $('.winner-message').text(currentPlayer + ' wins!')
+    $('.row').css('pointer-events', 'none')
+    $('.row').css('background', 'transparent')
+    $('#play-new-game').show()
+  } else if (!store.game.cells.includes('')) {
+    $('.winner-message').text('It\'s a tie!')
+    $('#play-new-game').show()
   }
-}
-
-const onClickCellSuccess = function (response) {
-  store.game = response.game
   setTimeout(function () {
     $('#space-taken-message').fadeOut('slow')
   }, 3500)
+}
+
+const onClickCellSuccess = function (response) {
+  setTimeout(function () {
+    $('#space-taken-message').fadeOut('slow')
+  }, 3500)
+  store.game = response.game
 }
 
 const onError = function (err) {
