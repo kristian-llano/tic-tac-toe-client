@@ -4,7 +4,7 @@ This application allows the user to sign up a new account, log in to the new acc
 
 ## Deployed Application
 
-<!-- - [Deployed Client](www.link.com)-->
+https://kristian-llano.github.io/tic-tac-toe-client/
 
 ## Planning
 
@@ -17,4 +17,6 @@ This application allows the user to sign up a new account, log in to the new acc
 
 ### Wireframe
 
-<!-- wireframes.jpg from imgur most likely-->
+![image](https://imgur.com/F7sJcL8.png)
+![image](https://imgur.com/lrbBeN5.png)
+![image](https://imgur.com/66wWRb6.png)
