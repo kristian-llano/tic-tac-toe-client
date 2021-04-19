@@ -117,6 +117,8 @@ const onCheckWinnerSuccess = function () {
     $('.row').css('background', 'transparent')
     $('#play-new-game').show()
   } else if (!store.game.cells.includes('')) {
+    $('#player-one').hide()
+    $('.winner-message').show()
     $('.winner-message').text('It\'s a tie!')
     $('#play-new-game').show()
   }
